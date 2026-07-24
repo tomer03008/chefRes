@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>התפריט · נוריה · נוה צדק</title>
+  <meta name="description" content="התפריט היומי של נוריה בנוה צדק. חמישה פרקים שנכתבים כל בוקר לפי השוק.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Bellefair&family=Frank+Ruhl+Libre:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/tokens.css?v=2026_figma_v2">
+  <link rel="stylesheet" href="styles.css?v=2026_figma_v2">
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+</head>
+<body class="theme-light page-menu">
+
+  <!-- ACT 01 · Nav -->
+  <header class="site-nav is-solid" id="siteNav">
+    <div class="site-nav__inner">
+      <a href="index.html" class="site-nav__logo">
+        <span class="logo-main">נוריה</span>
+        <span class="logo-sub">Nuria · Neve Tzedek</span>
+      </a>
+      <nav class="site-nav__links" aria-label="ניווט ראשי">
+        <a href="index.html#kitchen">המטבח</a>
+        <a href="index.html#room">החדר</a>
+        <a href="index.html#gallery">תמונות</a>
+        <a href="index.html#visit">ביקור</a>
+      </nav>
+      <a href="index.html#reserve" class="btn btn--outline site-nav__cta">הזמנת מקום</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Menu Page Header -->
+    <header class="menu-hero-header sec-light">
+      <div class="container">
+        <span class="eyebrow">התפריט</span>
+        <h1 class="sec-title">התפריט של <span id="menuDynamicDate">24 ביולי</span></h1>
+        <p class="lede-text">המחירים למנה בודדת. רוב הסועדים לוקחים את תפריט הטעימות — הוא נבנה מאותן מנות בגדלים אחרים.</p>
+        <a href="index.html" class="ul-link back-link">← חזרה לעמוד הראשי</a>
+      </div>
+    </header>
+
+    <!-- Sticky Category Filter Bar -->
+    <nav class="menu-filter-bar" aria-label="סינון קטגוריות תפריט">
+      <div class="container">
+        <div class="filter-chips-scroll">
+          <a href="#tasting" class="chip active">תפריט טעימות</a>
+          <a href="#chap-01" class="chip">01 פתיחה</a>
+          <a href="#chap-02" class="chip">02 מהאש</a>
+          <a href="#chap-03" class="chip">03 מהים</a>
+          <a href="#chap-04" class="chip">04 העיקר</a>
+          <a href="#chap-05" class="chip">05 סיום</a>
+          <a href="#chap-06" class="chip">06 לשתות</a>
+          <a href="#chap-wine" class="chip">יינות</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Tasting Menu Block (Featured Product at Top) -->
+    <section class="tasting-block-section sec-dark" id="tasting">
+      <div class="container">
+        <div class="tasting-block-card">
+          <div class="tasting-block-text">
+            <span class="eyebrow">Chef's table</span>
+            <h2 class="sec-title">תפריט טעימות · תשע מנות</h2>
+            <p class="lede-text">כל מה שיצא מהאש הערב, בסדר שעומרי בנה. שלוש שעות. מוגש לכל השולחן.</p>
+            <div class="tasting-tags">
+              <span class="tag">מיועד לכל השולחן</span>
+              <span class="tag">אורך החוויה: 3 שעות</span>
+              <span class="tag">9 מנות שף</span>
+            </div>
+          </div>
+          <div class="tasting-block-pricing">
+            <span class="price-big">₪480</span>
+            <span class="price-sub">התאמת יינות בכוסות · +₪280</span>
+            <a href="index.html#reserve" class="btn btn--fill">להזמין מקום</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Chapters -->
+    <div class="menu-chapters-wrap sec-light">
+      <div class="container">
+
+        <!-- 01 פתיחה -->
+        <section class="menu-chapter-grid" id="chap-01">
+          <div class="chapter-items-col">
+            <div class="chapter-head">
+              <span class="chapter-num">01</span>
+              <h2 class="chapter-title">פתיחה</h2>
+            </div>
+            <div class="chapter-list">
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">לחם מחמצת ומלח עתלית</h3><span class="mitem-dots"></span><span class="mitem-price">₪34</span></div>
+                <p class="mitem-desc">חמאת עשבים מהגינה שמאחור, מוגש חם מהטאבון</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">שקדים ירוקים ולאבנה</h3><span class="mitem-dots"></span><span class="mitem-price">₪58</span></div>
+                <p class="mitem-desc">ממחלבת שירת רועים, שמן זעתר, לימון כבוש</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">קרודו לוקוס</h3><span class="mitem-dots"></span><span class="mitem-price">₪72</span></div>
+                <p class="mitem-desc">אבטיח כבוש, קורנית, שמן זית מוראד תרשיחא</p>
+              </article>
+            </div>
+          </div>
+          <div class="chapter-side-col">
+            <figure class="chapter-img-frame">
+              <img src="images/chef_portrait.png" alt="לחם מחמצת חם מהטאבון" width="400" height="500" loading="lazy">
+              <figcaption>מנת הפרק: לחם מחמצת 2018</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 02 מהאש -->
+        <section class="menu-chapter-grid" id="chap-02">
+          <div class="chapter-items-col">
+            <div class="chapter-head">
+              <span class="chapter-num">02</span>
+              <h2 class="chapter-title">מהאש</h2>
+            </div>
+            <div class="chapter-list">
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">כרובית שלמה על גחלים</h3><span class="mitem-dots"></span><span class="mitem-price">₪68</span></div>
+                <p class="mitem-desc">טחינה גולמית, סילאן, שקדים קלויים · טבעוני</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">קלמארי צלוי</h3><span class="mitem-dots"></span><span class="mitem-price">₪86</span></div>
+                <p class="mitem-desc">ציר עצמות בקר, בצל צלוי, פטרוזיליה שרופה</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">כתף טלה, תשע שעות</h3><span class="mitem-dots"></span><span class="mitem-price">₪124</span></div>
+                <p class="mitem-desc">מנת הבית. חמש בערב, עד שנגמר</p>
+              </article>
+            </div>
+          </div>
+          <div class="chapter-side-col">
+            <figure class="chapter-img-frame">
+              <img src="images/signature_dish.png" alt="כתף טלה תשע שעות" width="400" height="500" loading="lazy">
+              <figcaption>מנת הפרק: כתף טלה מעל גחלי זית</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 03 מהים -->
+        <section class="menu-chapter-grid" id="chap-03">
+          <div class="chapter-items-col">
+            <div class="chapter-head">
+              <span class="chapter-num">03</span>
+              <h2 class="chapter-title">מהים</h2>
+            </div>
+            <div class="chapter-list">
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">דג היום בשלמותו</h3><span class="mitem-dots"></span><span class="mitem-price">₪148</span></div>
+                <p class="mitem-desc">מה שהגיע מנמל יפו הבוקר — היום דניס. לימון שרוף, טחינת אצות</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">טרטר טונה אדומה</h3><span class="mitem-dots"></span><span class="mitem-price">₪94</span></div>
+                <p class="mitem-desc">שמן שומר, חלמון כבוש, פלפל ירוק חריף</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">מרק דגים צלול</h3><span class="mitem-dots"></span><span class="mitem-price">₪62</span></div>
+                <p class="mitem-desc">שעתיים על אש נמוכה, מראשי הדגים של אותו בוקר</p>
+              </article>
+            </div>
+          </div>
+          <div class="chapter-side-col">
+            <figure class="chapter-img-frame">
+              <img src="images/beef_tartare.png" alt="טרטר טונה אדומה" width="400" height="500" loading="lazy">
+              <figcaption>מנת הפרק: טרטר טונה חלמון כבוש</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 04 העיקר -->
+        <section class="menu-chapter-grid" id="chap-04">
+          <div class="chapter-items-col">
+            <div class="chapter-head">
+              <span class="chapter-num">04</span>
+              <h2 class="chapter-title">העיקר</h2>
+            </div>
+            <div class="chapter-list">
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">אנטריקוט מיושן 40 יום</h3><span class="mitem-dots"></span><span class="mitem-price">₪186</span></div>
+                <p class="mitem-desc">על גחלי בטן, ציר עצמות מצומצם, מלח גס</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">יונת בית</h3><span class="mitem-dots"></span><span class="mitem-price">₪164</span></div>
+                <p class="mitem-desc">פיסטוק חלבי, ענבי מוסקט, ציר צלייה</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">פריקה בציר עוף</h3><span class="mitem-dots"></span><span class="mitem-price">₪98</span></div>
+                <p class="mitem-desc">גבינה צפתית, קורנית, שמן שום שרוף</p>
+              </article>
+            </div>
+          </div>
+          <div class="chapter-side-col">
+            <figure class="chapter-img-frame">
+              <img src="images/ribeye_steak.png" alt="אנטריקוט מיושן 40 יום" width="400" height="500" loading="lazy">
+              <figcaption>מנת הפרק: אנטריקוט 40 יום גחלי בטן</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 05 סיום -->
+        <section class="menu-chapter-grid" id="chap-05">
+          <div class="chapter-items-col">
+            <div class="chapter-head">
+              <span class="chapter-num">05</span>
+              <h2 class="chapter-title">סיום</h2>
+            </div>
+            <div class="chapter-list">
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">טארט תאנים</h3><span class="mitem-dots"></span><span class="mitem-price">₪52</span></div>
+                <p class="mitem-desc">תאנים מכפר ביל״ו, גלידת עלי תאנה</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">מלבי ורדים</h3><span class="mitem-dots"></span><span class="mitem-price">₪44</span></div>
+                <p class="mitem-desc">פיסטוק, מיץ ורדים, שמנת קרה</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">גבינות מקומיות</h3><span class="mitem-dots"></span><span class="mitem-price">₪66</span></div>
+                <p class="mitem-desc">שלוש גבינות, דבש משקדייה, לחם קלוי</p>
+              </article>
+            </div>
+          </div>
+          <div class="chapter-side-col">
+            <figure class="chapter-img-frame">
+              <img src="images/chocolate_tart.png" alt="טארט תאנים מכפר בילו" width="400" height="500" loading="lazy">
+              <figcaption>מנת הפרק: טארט תאנים גלידת עלי תאנה</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 06 לשתות -->
+        <section class="menu-chapter-grid" id="chap-06">
+          <div class="chapter-items-col">
+            <div class="chapter-head">
+              <span class="chapter-num">06</span>
+              <h2 class="chapter-title">לשתות</h2>
+            </div>
+            <div class="chapter-list">
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">ערק, אשכולית שרופה, זעתר</h3><span class="mitem-dots"></span><span class="mitem-price">₪52</span></div>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">יין כתום, כרם בגליל העליון</h3><span class="mitem-dots"></span><span class="mitem-price">₪58</span></div>
+                <p class="mitem-desc">לכוס</p>
+              </article>
+              <article class="mitem">
+                <div class="mitem-row"><h3 class="mitem-name">לימונדה מלוחה, לימון כבוש שלנו</h3><span class="mitem-dots"></span><span class="mitem-price">₪28</span></div>
+                <p class="mitem-desc">ללא אלכוהול</p>
+              </article>
+            </div>
+          </div>
+          <div class="chapter-side-col">
+            <figure class="chapter-img-frame">
+              <img src="images/hero_bg.png" alt="קוקטייל שף עכשווי" width="400" height="500" loading="lazy">
+              <figcaption>קוקטייל: ערק אשכולית שרופה</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- יינות -->
+        <section class="wine-section" id="chap-wine">
+          <div class="chapter-head">
+            <span class="chapter-num">07</span>
+            <h2 class="chapter-title">יינות לדוגמה</h2>
+          </div>
+          <table class="wine-table">
+            <thead>
+              <tr>
+                <th>יצרן</th>
+                <th>אזור</th>
+                <th>ענב</th>
+                <th>כוס</th>
+                <th>בקבוק</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>יקב בר-מאור</td><td>אלונה</td><td>סוביניון בלאן</td><td>₪52</td><td>₪210</td></tr>
+              <tr><td>יקב יעקב אוריה</td><td>הרי ירושלים</td><td>שנין בלאן כתום</td><td>₪58</td><td>₪240</td></tr>
+              <tr><td>יקב פלטר</td><td>גולן</td><td>קברנה פרנק</td><td>₪64</td><td>₪260</td></tr>
+              <tr><td>יקב ספרה</td><td>יהודה</td><td>שרדונה / ריסלינג</td><td>₪60</td><td>₪250</td></tr>
+              <tr><td>יקב מרגלית</td><td>בנימינה</td><td>קברנה סוביניון</td><td>—</td><td>₪380</td></tr>
+              <tr><td>יקב קסטל</td><td>הרי יהודה</td><td>גרנד וין 2019</td><td>—</td><td>₪420</td></tr>
+            </tbody>
+          </table>
+          <p class="wine-footer-note">רשימה מלאה בחדר · 61 בקבוקים</p>
+        </section>
+
+        <!-- Menu Notes -->
+        <div class="menu-notes-box">
+          <p>כל המחירים כוללים מע״מ · אין דמי שירות · תפריט טבעוני או ללא גלוטן נבנה במקום לפי בקשה</p>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ACT 13 · פוטר -->
+  <footer class="site-footer sec-dark">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-main">נוריה</span>
+          <span class="logo-sub">Nuria · Neve Tzedek</span>
+          <p class="footer-address">שבזי 27, תל אביב־יפו<br>שלישי–שבת, שתי משמרות</p>
+        </div>
+
+        <nav class="footer-links" aria-label="קישורי פוטר">
+          <a href="index.html#menu-preview">התפריט</a>
+          <a href="index.html#room">החדר</a>
+          <a href="index.html#kitchen">המטבח</a>
+          <a href="index.html#gallery">תמונות</a>
+          <a href="index.html#reserve">הזמנת מקום</a>
+        </nav>
+
+        <div class="footer-contact">
+          <a href="tel:03-5511240" class="ul-link">03-5511240</a>
+          <a href="https://wa.me/97235511240" target="_blank" rel="noopener" class="ul-link">וואטסאפ</a>
+          <a href="#" rel="nofollow" class="ul-link">אינסטגרם</a>
+          <a href="tel:03-5511240" class="ul-link">אירועים פרטיים</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="copy-text">© 2026 נוריה. כל הזכויות שמורות.</span>
+        <span class="latin-tag">Open kitchen · twelve seats</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=2026_figma_v2"></script>
+</body>
+</html>

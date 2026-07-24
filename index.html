@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>נוריה · מטבח פתוח בנוה צדק · תל אביב</title>
+  <meta name="description" content="נוריה — שתים־עשרה כיסאות סביב דלפק אחד בנוה צדק. תפריט אחד שנכתב כל בוקר. שבזי 27, תל אביב.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Bellefair&family=Frank+Ruhl+Libre:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/tokens.css?v=2026_creative_fix">
+  <link rel="stylesheet" href="styles.css?v=2026_creative_fix">
+
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+</head>
+<body class="theme-dark">
+
+  <!-- M1: Curtain Loader -->
+  <div class="curtain-loader" id="curtainLoader" aria-hidden="true">
+    <div class="curtain-loader__content">
+      <span class="curtain-loader__logo">נוריה</span>
+      <span class="curtain-loader__sub">Nuria · Neve Tzedek</span>
+    </div>
+  </div>
+
+  <!-- ACT 01 · Nav -->
+  <header class="site-nav" id="siteNav">
+    <div class="site-nav__inner">
+      <a href="#top" class="site-nav__logo">
+        <span class="logo-main">נוריה</span>
+        <span class="logo-sub">Nuria · Neve Tzedek</span>
+      </a>
+      <nav class="site-nav__links" aria-label="ניווט ראשי">
+        <a href="#menu-preview">התפריט</a>
+        <a href="#room">החדר</a>
+        <a href="#kitchen">המטבח</a>
+        <a href="#gallery">תמונות</a>
+        <a href="#visit">ביקור</a>
+      </nav>
+      <a href="#reserve" class="btn btn--outline site-nav__cta">הזמנת מקום</a>
+    </div>
+  </header>
+
+  <!-- Mobile Sticky CTA Bar -->
+  <div class="mobile-sticky-cta" id="mobileStickyCta">
+    <a href="#reserve" class="btn btn--fill">הזמנת מקום · 03-5511240</a>
+  </div>
+
+  <main id="top">
+
+    <!-- ACT 02 · Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-section__bg">
+        <img src="images/hero_bg.png" alt="הדלפק בנוריה נוה צדק בשעת ערב" width="1920" height="1080" loading="eager">
+        <div class="hero-section__scrim"></div>
+      </div>
+
+      <div class="hero-section__container">
+        <div class="hero-section__status" id="heroStatus">
+          <span class="status-dot"></span>
+          <span class="status-text" id="statusText">הדלת נפתחת ב־18:00</span>
+        </div>
+
+        <div class="hero-section__content">
+          <span class="hero-section__eyebrow">שבזי 27 · נוה צדק · תל אביב</span>
+          <h1 class="hero-section__title">
+            <span class="w"><i>שתים־עשרה</i></span> <span class="w"><i>כיסאות</i></span> <span class="w"><i>סביב</i></span> <span class="w"><i>האש.</i></span><br>
+            <span class="w"><i>תפריט</i></span> <span class="w"><i>אחד,</i></span> <span class="w"><i>שנכתב</i></span> <span class="w"><i>כל</i></span> <span class="w"><i>בוקר.</i></span>
+          </h1>
+          <div class="hero-section__foot">
+            <p class="hero-section__lede">אין מנות קבועות ואין מטבח אחורי. אתם יושבים במרחק זרוע מהגריל, ואוכלים את מה שהגיע הבוקר משוק לוינסקי, מנמל יפו ומהחקלאים שאנחנו קונים מהם שמונה שנים.</p>
+            <div class="hero-section__actions">
+              <a href="#reserve" class="btn btn--fill">הזמנת מקום</a>
+              <a href="menu.html" class="btn btn--outline">תפריט הערב</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-section__scrollcue" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scrollcue-line"></div>
+      </div>
+    </section>
+
+    <!-- ACT 03 · Ticker משלוחי הבוקר -->
+    <section class="ticker-section" aria-label="עדכוני משלוחי הבוקר">
+      <div class="ticker-section__container">
+        <div class="ticker-section__head">
+          <span class="ticker-label">Delivered this morning</span>
+          <span class="ticker-date" id="tickerDate">24 ביולי</span>
+        </div>
+        <div class="ticker-section__track-wrap">
+          <div class="ticker-section__track">
+            <span>דניס · נמל יפו, 06:10</span>
+            <span>·</span>
+            <span>עגבניות שרי · משק אריק, בית לחם הגלילית</span>
+            <span>·</span>
+            <span>תאנים · כפר ביל״ו</span>
+            <span>·</span>
+            <span>לאבנה · מחלבת שירת רועים</span>
+            <span>·</span>
+            <span>שקדים ירוקים · פרדס חנה</span>
+            <span>·</span>
+            <span>קלמארי · אשדוד</span>
+            <span>·</span>
+            <span>לימון כבוש · מהמלחה שלנו, מרץ</span>
+            <span>·</span>
+            <span>זעתר · הר מירון</span>
+            <span>·</span>
+            <span>ענבי מוסקט · כרמי זכרון</span>
+            <span>·</span>
+            <span>גחלי זית · מסיק דצמבר</span>
+            <span>·</span>
+            <!-- Duplicated sequence for endless CSS loop -->
+            <span>דניס · נמל יפו, 06:10</span>
+            <span>·</span>
+            <span>עגבניות שרי · משק אריק, בית לחם הגלילית</span>
+            <span>·</span>
+            <span>תאנים · כפר ביל״ו</span>
+            <span>·</span>
+            <span>לאבנה · מחלבת שירת רועים</span>
+            <span>·</span>
+            <span>שקדים ירוקים · פרדס חנה</span>
+            <span>·</span>
+            <span>קלמארי · אשדוד</span>
+            <span>·</span>
+            <span>לימון כבוש · מהמלחה שלנו, מרץ</span>
+            <span>·</span>
+            <span>זעתר · הר מירון</span>
+            <span>·</span>
+            <span>ענבי מוסקט · כרמי זכרון</span>
+            <span>·</span>
+            <span>גחלי זית · מסיק דצמבר</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 04 · המניפסט -->
+    <section class="manifest-section sec-light" id="kitchen">
+      <div class="container">
+        <div class="manifest-grid">
+          <div class="manifest-content">
+            <span class="eyebrow">איך זה עובד</span>
+            <h2 class="sec-title">אנחנו לא מחליטים מה תאכלו.<br>השוק מחליט.</h2>
+            <p class="lede-text">בשש בבוקר עומרי בשוק. עד עשר התפריט נכתב ביד על גב הכרטיס של אתמול, ובאחת־עשרה הוא נדפס. לפעמים יש דג אחד בלבד לכל הערב, ואז שתים־עשרה מנות יוצאות מאותו דג — כל אחת מחלק אחר.</p>
+            <p class="body-text">אם יש משהו שאתם לא אוכלים, ספרו לנו כשאתם מזמינים. אנחנו נבנה סביבכם, לא נסיר מהצלחת.</p>
+            
+            <div class="manifest-facts">
+              <div class="fact-item">
+                <span class="fact-num">12</span>
+                <span class="fact-desc">כיסאות. אין שולחנות, אין אזור פנימי</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-num">2</span>
+                <span class="fact-desc">משמרות בערב — 18:00 ו־20:45</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-num">61</span>
+                <span class="fact-desc">יינות, רובם מהגליל ומירוחם</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="manifest-media">
+            <figure class="media-frame media-frame--a reveal-mask">
+              <img src="images/hero_bg.png" alt="חומרי גלם טריים מהשוק" width="600" height="800" loading="lazy">
+              <figcaption>שוק לוינסקי, 06:20</figcaption>
+            </figure>
+            <figure class="media-frame media-frame--b reveal-mask">
+              <img src="images/signature_dish.png" alt="כרטיס התפריט היומי" width="600" height="750" loading="lazy">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 05 · רצף מנת הבית (Pinned Sticky 400vh M4) -->
+    <section class="signature-section sec-dark" id="signature">
+      <div class="signature-pin-wrap" id="signaturePin">
+        <div class="container signature-container">
+          <div class="signature-grid">
+            <div class="signature-text-col">
+              <span class="eyebrow">המנה שאנחנו לא מוציאים מהתפריט</span>
+              <h2 class="sec-title">כתף טלה, תשע שעות<br>מעל גחלי זית</h2>
+              
+              <div class="signature-steps-indicator">
+                <div class="step-line step-line--1 active" data-step="1">
+                  <span class="step-time">09:00</span>
+                  <span class="step-label">הכתף נכנסת לגחלים</span>
+                </div>
+                <div class="step-line step-line--2" data-step="2">
+                  <span class="step-time">14:00</span>
+                  <span class="step-label">חמש שעות פנימה, מסתובבת פעם בשעה</span>
+                </div>
+                <div class="step-line step-line--3" data-step="3">
+                  <span class="step-time">18:00</span>
+                  <span class="step-label">יוצאת שלמה, בדיוק כשהדלת נפתחת</span>
+                </div>
+              </div>
+
+              <p class="body-text">נכנסת לגחלים ב־09:00 ויוצאת ב־18:00, בדיוק כשהדלת נפתחת. מוגשת שלמה על העצם עם לאבנה מעושנת, בצל צלוי בקליפתו ולחם מחמצת שנילוש מאותו מחמצת מאז 2018. אנחנו מכינים חמש כתפיים בערב. כשנגמר, נגמר.</p>
+
+              <div class="signature-tags">
+                <span class="tag">גחלי זית</span>
+                <span class="tag">לאבנה מעושנת</span>
+                <span class="tag">בצל צלוי בקליפה</span>
+                <span class="tag">מחמצת 2018</span>
+              </div>
+
+              <div class="signature-price-row">
+                <span class="price-val">₪124</span>
+                <span class="price-note">למנה · 5 מנות בערב · כלולה בתפריט הטעימות</span>
+              </div>
+            </div>
+
+            <div class="signature-img-col">
+              <div class="signature-img-stack">
+                <figure class="sig-img sig-img--1 active">
+                  <img src="images/signature_dish.png" alt="כתף טלה בגחלים בבוקר" width="800" height="1000" loading="lazy">
+                </figure>
+                <figure class="sig-img sig-img--2">
+                  <img src="images/beef_tartare.png" alt="כתף טלה באמצע הבישול" width="800" height="1000" loading="lazy">
+                </figure>
+                <figure class="sig-img sig-img--3">
+                  <img src="images/ribeye_steak.png" alt="כתף טלה מוכנה להגשה" width="800" height="1000" loading="lazy">
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 06 · שתי שורות תמונות מנוגדות (M5) -->
+    <section class="food-marquee-section sec-light" aria-label="גלריית מנות צפה">
+      <div class="food-marquee-track food-marquee-track--top" id="marqueeTop">
+        <figure class="food-card"><img src="images/beef_tartare.png" alt="טרטר בקר" width="400" height="533" loading="lazy"><figcaption>טרטר בקר, חלמון כבוש</figcaption></figure>
+        <figure class="food-card"><img src="images/signature_dish.png" alt="כתף טלה" width="400" height="533" loading="lazy"><figcaption>כתף טלה מעל גחלים</figcaption></figure>
+        <figure class="food-card"><img src="images/ribeye_steak.png" alt="אנטריקוט מיושן" width="400" height="533" loading="lazy"><figcaption>אנטריקוט מיושן 40 יום</figcaption></figure>
+        <figure class="food-card"><img src="images/chocolate_tart.png" alt="טארט תאנים" width="400" height="533" loading="lazy"><figcaption>טארט תאנים מכפר ביל״ו</figcaption></figure>
+        <figure class="food-card"><img src="images/hero_bg.png" alt="דג היום" width="400" height="533" loading="lazy"><figcaption>דג היום בשלמותו</figcaption></figure>
+      </div>
+
+      <div class="food-marquee-track food-marquee-track--bottom" id="marqueeBottom">
+        <figure class="food-card"><img src="images/chocolate_tart.png" alt="קינוח מלבי" width="400" height="400" loading="lazy"><figcaption>מלבי ורדים ופיסטוק</figcaption></figure>
+        <figure class="food-card"><img src="images/ribeye_steak.png" alt="קלמארי צלוי" width="400" height="400" loading="lazy"><figcaption>קלמארי צלוי בציר בקר</figcaption></figure>
+        <figure class="food-card"><img src="images/chef_portrait.png" alt="לחם מחמצת" width="400" height="400" loading="lazy"><figcaption>לחם מחמצת מהטאבון</figcaption></figure>
+        <figure class="food-card"><img src="images/beef_tartare.png" alt="קרודו לוקוס" width="400" height="400" loading="lazy"><figcaption>קרודו לוקוס ואבטיח כבוש</figcaption></figure>
+        <figure class="food-card"><img src="images/signature_dish.png" alt="יונת בית" width="400" height="400" loading="lazy"><figcaption>יונת בית וענבי מוסקט</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ACT 07 · התפריט (Pinned Horizontal 340vh M6) -->
+    <section class="horizontal-menu-section sec-light" id="menu-preview">
+      <div class="horizontal-menu-pin" id="menuPin">
+        <div class="horizontal-menu-header">
+          <div class="container">
+            <div class="menu-head-flex">
+              <div>
+                <span class="eyebrow">התפריט של 24 ביולי</span>
+                <h2 class="sec-title">חמישה פרקים, לפי הסדר שהם יוצאים</h2>
+              </div>
+              <p class="body-text menu-head-desc">המחירים למנה בודדת. רוב הסועדים לוקחים את תפריט הטעימות — הוא נבנה מאותן מנות בגדלים אחרים.</p>
+            </div>
+            <div class="menu-progress-bar"><div class="menu-progress-fill" id="menuProgressFill"></div></div>
+          </div>
+        </div>
+
+        <div class="horizontal-menu-track" id="menuTrack">
+          <!-- 01 פתיחה -->
+          <div class="menu-panel">
+            <div class="panel-num">01</div>
+            <h3 class="panel-title">פתיחה</h3>
+            <div class="menu-items-list">
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">לחם מחמצת ומלח עתלית</span><span class="mitem-dots"></span><span class="mitem-price">₪34</span></div>
+                <p class="mitem-desc">חמאת עשבים מהגינה שמאחור, מוגש חם מהטאבון</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">שקדים ירוקים ולאבנה</span><span class="mitem-dots"></span><span class="mitem-price">₪58</span></div>
+                <p class="mitem-desc">ממחלבת שירת רועים, שמן זעתר, לימון כבוש</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">קרודו לוקוס</span><span class="mitem-dots"></span><span class="mitem-price">₪72</span></div>
+                <p class="mitem-desc">אבטיח כבוש, קורנית, שמן זית מוראד תרשיחא</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 מהאש -->
+          <div class="menu-panel">
+            <div class="panel-num">02</div>
+            <h3 class="panel-title">מהאש</h3>
+            <div class="menu-items-list">
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">כרובית שלמה על גחלים</span><span class="mitem-dots"></span><span class="mitem-price">₪68</span></div>
+                <p class="mitem-desc">טחינה גולמית, סילאן, שקדים קלויים · טבעוני</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">קלמארי צלוי</span><span class="mitem-dots"></span><span class="mitem-price">₪86</span></div>
+                <p class="mitem-desc">ציר עצמות בקר, בצל צלוי, פטרוזיליה שרופה</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">כתף טלה, תשע שעות</span><span class="mitem-dots"></span><span class="mitem-price">₪124</span></div>
+                <p class="mitem-desc">מנת הבית. חמש בערב, עד שנגמר</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 מהים -->
+          <div class="menu-panel">
+            <div class="panel-num">03</div>
+            <h3 class="panel-title">מהים</h3>
+            <div class="menu-items-list">
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">דג היום בשלמותו</span><span class="mitem-dots"></span><span class="mitem-price">₪148</span></div>
+                <p class="mitem-desc">מה שהגיע מנמל יפו הבוקר — היום דניס. לימון שרוף, טחינת אצות</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">טרטר טונה אדומה</span><span class="mitem-dots"></span><span class="mitem-price">₪94</span></div>
+                <p class="mitem-desc">שמן שומר, חלמון כבוש, פלפל ירוק חריף</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">מרק דגים צלול</span><span class="mitem-dots"></span><span class="mitem-price">₪62</span></div>
+                <p class="mitem-desc">שעתיים על אש נמוכה, מראשי הדגים של אותו בוקר</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 העיקר -->
+          <div class="menu-panel">
+            <div class="panel-num">04</div>
+            <h3 class="panel-title">העיקר</h3>
+            <div class="menu-items-list">
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">אנטריקוט מיושן 40 יום</span><span class="mitem-dots"></span><span class="mitem-price">₪186</span></div>
+                <p class="mitem-desc">על גחלי בטן, ציר עצמות מצומצם, מלח גס</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">יונת בית</span><span class="mitem-dots"></span><span class="mitem-price">₪164</span></div>
+                <p class="mitem-desc">פיסטוק חלבי, ענבי מוסקט, ציר צלייה</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">פריקה בציר עוף</span><span class="mitem-dots"></span><span class="mitem-price">₪98</span></div>
+                <p class="mitem-desc">גבינה צפתית, קורנית, שמן שום שרוף</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 סיום -->
+          <div class="menu-panel">
+            <div class="panel-num">05</div>
+            <h3 class="panel-title">סיום</h3>
+            <div class="menu-items-list">
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">טארט תאנים</span><span class="mitem-dots"></span><span class="mitem-price">₪52</span></div>
+                <p class="mitem-desc">תאנים מכפר ביל״ו, גלידת עלי תאנה</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">מלבי ורדים</span><span class="mitem-dots"></span><span class="mitem-price">₪44</span></div>
+                <p class="mitem-desc">פיסטוק, מיץ ורדים, שמנת קרה</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">גבינות מקומיות</span><span class="mitem-dots"></span><span class="mitem-price">₪66</span></div>
+                <p class="mitem-desc">שלוש גבינות, דבש משקדייה, לחם קלוי</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 לשתות -->
+          <div class="menu-panel">
+            <div class="panel-num">06</div>
+            <h3 class="panel-title">לשתות</h3>
+            <div class="menu-items-list">
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">ערק, אשכולית שרופה, זעתר</span><span class="mitem-dots"></span><span class="mitem-price">₪52</span></div>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">יין כתום, כרם בגליל העליון</span><span class="mitem-dots"></span><span class="mitem-price">₪58</span></div>
+                <p class="mitem-desc">לכוס</p>
+              </div>
+              <div class="mitem">
+                <div class="mitem-row"><span class="mitem-name">לימונדה מלוחה, לימון כבוש שלנו</span><span class="mitem-dots"></span><span class="mitem-price">₪28</span></div>
+                <p class="mitem-desc">ללא אלכוהול</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tasting Menu Dark Panel -->
+          <div class="menu-panel menu-panel--tasting">
+            <span class="tasting-kicker">Chef's table</span>
+            <h3 class="panel-title">תפריט טעימות · תשע מנות</h3>
+            <p class="body-text">כל מה שיצא מהאש הערב, בסדר שעומרי בנה. שלוש שעות. מוגש לכל השולחן.</p>
+            <div class="tasting-price-stack">
+              <span class="tasting-main-price">₪480</span>
+              <span class="tasting-sub-price">התאמת יינות בכוסות · +₪280</span>
+            </div>
+            <a href="#reserve" class="btn btn--fill">להזמין מקום</a>
+          </div>
+
+          <!-- Link to Full Menu Page -->
+          <div class="menu-panel menu-panel--link">
+            <a href="menu.html" class="full-menu-link">לתפריט המלא <i>←</i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 08 · החדר · 12 כיסאות (M7) -->
+    <section class="room-section sec-alt" id="room">
+      <div class="container">
+        <div class="room-grid">
+          <div class="room-diagram-col">
+            <span class="eyebrow">החדר</span>
+            <h2 class="sec-title">שתים־עשרה כיסאות.</h2>
+            
+            <!-- SVG Counter Top-View Diagram -->
+            <div class="counter-svg-wrap">
+              <svg viewBox="0 0 720 320" class="counter-svg" id="counterSvg" aria-label="תרשים שתים עשרה הכיסאות בנוריה">
+                <!-- Kitchen Zones Labels -->
+                <text x="120" y="45" class="zone-tag">GRILL</text>
+                <text x="360" y="45" class="zone-tag">PASS</text>
+                <text x="600" y="45" class="zone-tag">PASTRY</text>
+                
+                <!-- Main Counter Shape -->
+                <rect x="50" y="70" width="620" height="70" rx="0" class="counter-base" />
+                <text x="360" y="112" class="counter-title">הדלפק</text>
+                
+                <!-- 12 Seat Circles -->
+                <g class="seats-group">
+                  <g class="seat-item" data-seat="1" tabindex="0" role="button" aria-label="כיסא 1: הפינה של הגריל">
+                    <circle cx="75" cy="210" r="20" class="seat-node" />
+                    <text x="75" y="210" class="seat-num">01</text>
+                  </g>
+                  <g class="seat-item" data-seat="2" tabindex="0" role="button" aria-label="כיסא 2: שני מהאש">
+                    <circle cx="127" cy="210" r="20" class="seat-node" />
+                    <text x="127" y="210" class="seat-num">02</text>
+                  </g>
+                  <g class="seat-item" data-seat="3" tabindex="0" role="button" aria-label="כיסא 3: מול המחבתות">
+                    <circle cx="179" cy="210" r="20" class="seat-node" />
+                    <text x="179" y="210" class="seat-num">03</text>
+                  </g>
+                  <g class="seat-item" data-seat="4" tabindex="0" role="button" aria-label="כיסא 4: קצה הגריל">
+                    <circle cx="231" cy="210" r="20" class="seat-node" />
+                    <text x="231" y="210" class="seat-num">04</text>
+                  </g>
+                  <g class="seat-item" data-seat="5" tabindex="0" role="button" aria-label="כיסא 5: תחילת הפאס">
+                    <circle cx="283" cy="210" r="20" class="seat-node" />
+                    <text x="283" y="210" class="seat-num">05</text>
+                  </g>
+                  <g class="seat-item seat-item--active" data-seat="6" tabindex="0" role="button" aria-label="כיסא 6: מרכז הפאס">
+                    <circle cx="335" cy="210" r="20" class="seat-node" />
+                    <text x="335" y="210" class="seat-num">06</text>
+                  </g>
+                  <g class="seat-item" data-seat="7" tabindex="0" role="button" aria-label="כיסא 7: מול הרטבים">
+                    <circle cx="387" cy="210" r="20" class="seat-node" />
+                    <text x="387" y="210" class="seat-num">07</text>
+                  </g>
+                  <g class="seat-item" data-seat="8" tabindex="0" role="button" aria-label="כיסא 8: סוף הפאס">
+                    <circle cx="439" cy="210" r="20" class="seat-node" />
+                    <text x="439" y="210" class="seat-num">08</text>
+                  </g>
+                  <g class="seat-item" data-seat="9" tabindex="0" role="button" aria-label="כיסא 9: מול הקינוחים">
+                    <circle cx="491" cy="210" r="20" class="seat-node" />
+                    <text x="491" y="210" class="seat-num">09</text>
+                  </g>
+                  <g class="seat-item" data-seat="10" tabindex="0" role="button" aria-label="כיסא 10: ליד המחמצת">
+                    <circle cx="543" cy="210" r="20" class="seat-node" />
+                    <text x="543" y="210" class="seat-num">10</text>
+                  </g>
+                  <g class="seat-item" data-seat="11" tabindex="0" role="button" aria-label="כיסא 11: הכיסא של החלון">
+                    <circle cx="595" cy="210" r="20" class="seat-node" />
+                    <text x="595" y="210" class="seat-num">11</text>
+                  </g>
+                  <g class="seat-item" data-seat="12" tabindex="0" role="button" aria-label="כיסא 12: הקצה השקט">
+                    <circle cx="647" cy="210" r="20" class="seat-node" />
+                    <text x="647" y="210" class="seat-num">12</text>
+                  </g>
+                </g>
+
+                <text x="75"  y="280" class="dir-tag">ENTRANCE →</text>
+                <text x="647" y="280" class="dir-tag">← SHABAZI</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="room-info-col" aria-live="polite" id="seatInfo">
+            <span class="seat-tag" id="seatTag">Seat 06 / 12</span>
+            <h3 class="seat-title" id="seatTitle">מרכז הפאס</h3>
+            <p class="lede-text" id="seatDesc">המקום שבו עומרי עומד רוב הערב. אם באתם לדבר עם השף — זה הכיסא.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 09 · השף -->
+    <section class="chef-section sec-dark" id="chef">
+      <div class="container">
+        <div class="chef-grid">
+          <div class="chef-media-col">
+            <figure class="media-frame media-frame--portrait reveal-mask">
+              <img src="images/chef_portrait.png" alt="השף עומרי דהאן במטבח נוריה" width="800" height="1000" loading="lazy">
+            </figure>
+          </div>
+
+          <div class="chef-text-col">
+            <span class="eyebrow">מי מבשל</span>
+            <h2 class="sec-title">עומרי דהאן</h2>
+            <p class="lede-text">גדל בשכונת שפירא, שבע דקות הליכה מהשוק שהוא קונה בו עד היום. עבד שנתיים בסן סבסטיאן, חזר, ובישל חמש שנים כסו־שף לפני שפתח את נוריה ב־2019 עם שני עובדים וארבע־עשרה כיסאות. בשנה הראשונה הוריד שניים, כדי שיהיה מקום לעבור עם המחבת.</p>
+            <blockquote class="chef-quote">״אני לא מאמין בתפריט שנשאר אותו דבר שבועיים. זה אומר שמישהו קונה מהמקפיא.״</blockquote>
+            <div class="chef-sign">
+              <span class="sign-name">עומרי</span>
+              <span class="sign-role">שף־שותף · נוריה, מאז 2019</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 10 · גלריה (גריד א-סימטרי) -->
+    <section class="gallery-section sec-light" id="gallery">
+      <div class="container">
+        <div class="gallery-grid">
+          <figure class="gallery-item item-1 reveal-mask">
+            <img src="images/hero_bg.png" alt="שתים-עשרה מקומות תפוסים בנוריה" width="900" height="675" loading="lazy">
+            <figcaption>20:10 · שתים־עשרה מקומות, כולם תפוסים</figcaption>
+          </figure>
+          <figure class="gallery-item item-2 reveal-mask">
+            <img src="images/signature_dish.png" alt="גחלי זית נדלקות בבוקר" width="600" height="600" loading="lazy">
+            <figcaption>גחלי זית, נדלקות ב־08:30</figcaption>
+          </figure>
+          <figure class="gallery-item item-3 reveal-mask">
+            <img src="images/beef_tartare.png" alt="הצלחת יוצאת מטר וחצי מהסועד" width="600" height="800" loading="lazy">
+            <figcaption>הצלחת יוצאת מטר וחצי מהסועד</figcaption>
+          </figure>
+          <figure class="gallery-item item-4 reveal-mask">
+            <img src="images/ribeye_steak.png" alt="61 בקבוקי ייין נפתחים בכוסות" width="600" height="800" loading="lazy">
+            <figcaption>61 בקבוקים · נפתחים בכוסות</figcaption>
+          </figure>
+          <figure class="gallery-item item-5 reveal-mask">
+            <img src="images/chocolate_tart.png" alt="שבזי 27 התריס הירוק" width="600" height="600" loading="lazy">
+            <figcaption>שבזי 27 · חפשו את התריס הירוק</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 11 · עיתונות -->
+    <section class="press-section sec-light" aria-label="ציטוטי עיתונות">
+      <div class="container">
+        <div class="press-grid">
+          <article class="press-card">
+            <span class="press-source">מוסף הטעמים</span>
+            <blockquote class="press-quote">שתים־עשרה כיסאות שמצליחים להרגיש כמו ארוחה בבית של מישהו שמבשל טוב מדי.</blockquote>
+            <span class="press-author">נעה בר־לב · מרץ 2026</span>
+          </article>
+          <article class="press-card">
+            <span class="press-source">מדריך המסעדות</span>
+            <blockquote class="press-quote">הכתף על הגחלים היא סיבה מספקת לנסוע לתל אביב.</blockquote>
+            <span class="press-author">דירוג: מומלץ במיוחד · 2026</span>
+          </article>
+          <article class="press-card">
+            <span class="press-source">שבועון קולינרי</span>
+            <blockquote class="press-quote">תפריט שמשתנה כל בוקר זה הצהרה. שנה שביעית שהם עומדים בה.</blockquote>
+            <span class="press-author">יונתן אלמוג · נובמבר 2025</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 12 · ביקור והזמנה -->
+    <section class="visit-reserve-section sec-light" id="visit">
+      <div class="container">
+        <div class="visit-reserve-grid">
+          <!-- עמודת ביקור -->
+          <div class="visit-col">
+            <span class="eyebrow">ביקור</span>
+            <h2 class="sec-title">שבזי 27,<br>התריס הירוק</h2>
+            <p class="lede-text">אנחנו מחזיקים ארבעה כיסאות לאנשים שנכנסים מהרחוב. השאר בהזמנה מראש — לרוב שבועיים קדימה, ולסופי שבוע יותר.</p>
+
+            <dl class="info-list">
+              <div class="info-row"><dt>שעות</dt><dd>שלישי–שבת · שתי משמרות: 18:00 ו־20:45</dd></div>
+              <div class="info-row"><dt>סגור</dt><dd>ראשון ושני</dd></div>
+              <div class="info-row"><dt>כשרות</dt><dd>המסעדה אינה כשרה</dd></div>
+              <div class="info-row"><dt>נגישות</dt><dd>כניסה בגובה הרחוב, שירותים נגישים</dd></div>
+              <div class="info-row"><dt>חניה</dt><dd>חניון גילת, אילת 11 — שש דקות הליכה</dd></div>
+              <div class="info-row"><dt>ביטול</dt><dd>עד 24 שעות לפני, בלי חיוב</dd></div>
+              <div class="info-row"><dt>אירועים</dt><dd>סגירת החדר כולו לשתים־עשרה סועדים <a href="tel:03-5511240" class="ul-link">בקשת הצעה</a></dd></div>
+            </dl>
+
+            <div class="contact-links">
+              <a href="tel:03-5511240" class="btn btn--outline">03-5511240</a>
+              <a href="https://wa.me/97235511240" target="_blank" rel="noopener" class="btn btn--outline">וואטסאפ</a>
+            </div>
+          </div>
+
+          <!-- עמודת הזמנת מקום -->
+          <div class="reserve-col" id="reserve">
+            <div class="reserve-card">
+              <span class="eyebrow">הזמנת מקום</span>
+              <h3 class="reserve-title">נחזור אליכם בוואטסאפ<br>תוך שעה</h3>
+
+              <form class="reserve-form" id="reserveForm" novalidate>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="rName">שם</label>
+                    <input type="text" id="rName" name="name" required placeholder="השם שלכם">
+                  </div>
+                  <div class="form-group">
+                    <label for="rPhone">טלפון</label>
+                    <input type="tel" id="rPhone" name="phone" required placeholder="050-0000000">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="rDate">תאריך</label>
+                    <input type="date" id="rDate" name="date" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="rShift">משמרת</label>
+                    <select id="rShift" name="shift" required>
+                      <option value="18:00">משמרת ראשונה · 18:00</option>
+                      <option value="20:45" selected>משמרת שנייה · 20:45</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="rGuests">סועדים</label>
+                  <select id="rGuests" name="guests" required>
+                    <option value="1">1 סועד</option>
+                    <option value="2" selected>2 סועדים</option>
+                    <option value="3">3 סועדים</option>
+                    <option value="4">4 סועדים</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>כיסא מועדף</label>
+                  <div class="seat-chips" id="seatChips">
+                    <button type="button" class="chip active" data-seat-choice="כל כיסא">כל כיסא</button>
+                    <button type="button" class="chip" data-seat-choice="מול הגריל">מול הגריל</button>
+                    <button type="button" class="chip" data-seat-choice="מול הפאס">מול הפאס</button>
+                    <button type="button" class="chip" data-seat-choice="בקצה, ליד החלון">בקצה, ליד החלון</button>
+                  </div>
+                  <input type="hidden" name="preferred_seat" id="rPreferredSeat" value="כל כיסא">
+                </div>
+
+                <div class="form-group">
+                  <label for="rAllergies">אלרגיות או משהו שלא אוכלים</label>
+                  <input type="text" id="rAllergies" name="allergies" placeholder="נבנה סביב זה, לא נסיר מהצלחת">
+                </div>
+
+                <button type="submit" class="btn btn--fill btn--submit">שליחת בקשה</button>
+
+                <p class="reserve-note">הבקשה לא סופית עד שנאשר בוואטסאפ. תפריט הטעימות מוגש לכל השולחן, ומעל ארבעה סועדים הוא חובה.</p>
+
+                <div class="form-feedback" id="formFeedback" aria-live="polite" hidden></div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- תמונת מפה סטטית מיושרת גוונים -->
+        <div class="map-wrap">
+          <div class="static-map">
+            <img src="images/hero_bg.png" alt="מפת נוה צדק שבזי 27" width="1200" height="400" loading="lazy">
+            <div class="map-overlay">
+              <a href="https://maps.google.com/?q=Shabazi+27+Tel+Aviv" target="_blank" rel="noopener" class="btn btn--outline">פתחו בגוגל מפות / Waze</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ACT 13 · פוטר -->
+  <footer class="site-footer sec-dark">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-main">נוריה</span>
+          <span class="logo-sub">Nuria · Neve Tzedek</span>
+          <p class="footer-address">שבזי 27, תל אביב־יפו<br>שלישי–שבת, שתי משמרות</p>
+        </div>
+
+        <nav class="footer-links" aria-label="קישורי פוטר">
+          <a href="#menu-preview">התפריט</a>
+          <a href="#room">החדר</a>
+          <a href="#kitchen">המטבח</a>
+          <a href="#gallery">תמונות</a>
+          <a href="#reserve">הזמנת מקום</a>
+        </nav>
+
+        <div class="footer-contact">
+          <a href="tel:03-5511240" class="ul-link">03-5511240</a>
+          <a href="https://wa.me/97235511240" target="_blank" rel="noopener" class="ul-link">וואטסאפ</a>
+          <a href="#" rel="nofollow" class="ul-link">אינסטגרם</a>
+          <a href="tel:03-5511240" class="ul-link">אירועים פרטיים</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="copy-text">© 2026 נוריה. כל הזכויות שמורות.</span>
+        <span class="latin-tag">Open kitchen · twelve seats</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js?v=2026_creative_fix"></script>
+</body>
+</html>
