@@ -515,34 +515,16 @@ body.ready .hero-section__bg img {
   margin-bottom: 32px;
   color: var(--plaster-100);
   text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.hero-section__title .w {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-}
-.hero-section__title .w > i {
-  display: inline-block;
-  font-style: normal;
-  transform: translateY(110%);
   opacity: 0;
-  transition: transform 900ms var(--ease), opacity 900ms var(--ease);
-}
-body.ready .hero-section__title .w > i {
-  transform: translateY(0);
-  opacity: 1;
+  transform: translateY(18px);
+  transition: opacity 900ms var(--ease), transform 900ms var(--ease);
+  will-change: opacity, transform;
 }
 
-.hero-section__title .w:nth-child(1) > i { transition-delay: 100ms; }
-.hero-section__title .w:nth-child(2) > i { transition-delay: 155ms; }
-.hero-section__title .w:nth-child(3) > i { transition-delay: 210ms; }
-.hero-section__title .w:nth-child(4) > i { transition-delay: 265ms; }
-.hero-section__title .w:nth-child(5) > i { transition-delay: 320ms; }
-.hero-section__title .w:nth-child(6) > i { transition-delay: 375ms; }
-.hero-section__title .w:nth-child(7) > i { transition-delay: 430ms; }
-.hero-section__title .w:nth-child(8) > i { transition-delay: 485ms; }
-.hero-section__title .w:nth-child(9) > i { transition-delay: 540ms; }
+body.ready .hero-section__title {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .hero-section__foot {
   display: flex;
@@ -1847,6 +1829,10 @@ body.ready .hero-section__title .w > i {
   .site-nav__cta { display: none; }
   .mobile-sticky-cta { display: block; }
   
+  .hero-section__title {
+    font-size: clamp(2.2rem, 9.2vw, 4.2rem);
+  }
+  
   .manifest-grid, .chef-grid, .visit-reserve-grid, .room-grid, .menu-chapter-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1856,11 +1842,12 @@ body.ready .hero-section__title .w > i {
   
   .signature-section {
     height: auto;
+    padding-block: var(--sec-y);
   }
   .signature-pin-wrap {
     position: static;
     height: auto;
-    padding-block: var(--sec-y);
+    padding-block: 0;
   }
   .signature-grid {
     grid-template-columns: 1fr;
@@ -1877,9 +1864,10 @@ body.ready .hero-section__title .w > i {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
   }
   .menu-panel {
-    flex: 0 0 82vw;
+    flex: 0 0 85vw;
     scroll-snap-align: start;
   }
   
@@ -1897,6 +1885,10 @@ body.ready .hero-section__title .w > i {
   
   .form-row {
     flex-direction: column;
+  }
+
+  input, select, textarea {
+    font-size: 16px !important;
   }
 }
 

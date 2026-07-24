@@ -1,6 +1,6 @@
 /* ==========================================================================
    script.js — Application Logic & Motion System for נוריה (Nuria)
-   100% Native Mouse Wheel Scrolling (Zero Wheel Hijacking)
+   100% Mobile Friendly, Native Scroll & Interactive Touch Animations
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateLiveStatus();
 
   /* ------------------------------------------------------------------------
-     3. NATIVE 60FPS SCROLL ENGINE (NO MOUSE WHEEL HIJACKING)
+     3. UNIFIED 60FPS SCROLL ENGINE (DESKTOP & MOBILE RESPONSIVE)
      ------------------------------------------------------------------------ */
   const siteNav = document.getElementById('siteNav');
   const mobileStickyCta = document.getElementById('mobileStickyCta');
@@ -80,10 +80,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isTicking = false;
 
+  function setActiveSignatureStep(stepNumber) {
+    stepLines.forEach((line) => {
+      const step = parseInt(line.dataset.step, 10);
+      if (step === stepNumber) {
+        line.classList.add('active');
+      } else {
+        line.classList.remove('active');
+      }
+    });
+
+    sigImgs.forEach((img, idx) => {
+      if (idx + 1 === stepNumber) {
+        img.classList.add('active');
+      } else {
+        img.classList.remove('active');
+      }
+    });
+  }
+
+  // Interactive Tap Listener on Step Lines (Mobile & Desktop)
+  stepLines.forEach(line => {
+    line.addEventListener('click', () => {
+      const stepNum = parseInt(line.dataset.step, 10);
+      setActiveSignatureStep(stepNum);
+    });
+  });
+
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
 
-    // A. Nav Bar & Mobile Sticky CTA
+    // A. Navigation Bar & Mobile Sticky CTA
     if (siteNav) {
       if (scrollY > 100) {
         siteNav.classList.add('is-solid');
@@ -94,42 +121,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (mobileStickyCta && heroEl) {
       const heroHeight = heroEl.offsetHeight;
-      if (scrollY > heroHeight * 0.6) {
+      if (scrollY > heroHeight * 0.5) {
         mobileStickyCta.classList.add('is-visible');
       } else {
         mobileStickyCta.classList.remove('is-visible');
       }
     }
 
-    // B. M4: Signature Dish Sticky Progression
-    if (signatureSection && window.innerWidth > 900) {
-      const rect = signatureSection.getBoundingClientRect();
-      const sectionHeight = signatureSection.offsetHeight - window.innerHeight;
-      const scrollProgress = Math.min(1, Math.max(0, -rect.top / sectionHeight));
+    // B. M4: Signature Dish Sticky Progression (Desktop & Mobile)
+    if (signatureSection) {
+      if (window.innerWidth > 900) {
+        const rect = signatureSection.getBoundingClientRect();
+        const sectionHeight = signatureSection.offsetHeight - window.innerHeight;
+        const scrollProgress = Math.min(1, Math.max(0, -rect.top / sectionHeight));
 
-      let activeStep = 1;
-      if (scrollProgress > 0.66) {
-        activeStep = 3;
-      } else if (scrollProgress > 0.33) {
-        activeStep = 2;
+        let activeStep = 1;
+        if (scrollProgress > 0.66) {
+          activeStep = 3;
+        } else if (scrollProgress > 0.33) {
+          activeStep = 2;
+        }
+        setActiveSignatureStep(activeStep);
       }
-
-      stepLines.forEach((line) => {
-        const step = parseInt(line.dataset.step, 10);
-        if (step === activeStep) {
-          line.classList.add('active');
-        } else {
-          line.classList.remove('active');
-        }
-      });
-
-      sigImgs.forEach((img, idx) => {
-        if (idx + 1 === activeStep) {
-          img.classList.add('active');
-        } else {
-          img.classList.remove('active');
-        }
-      });
     }
 
     // C. M5: Opposite Moving Image Rows
@@ -139,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
       marqueeBottom.style.transform = `translateX(${-moveAmount}px)`;
     }
 
-    // D. M6: Horizontal Pinned Menu Track
+    // D. M6: Horizontal Pinned Menu Track (Desktop Only)
     if (menuSection && menuTrack && window.innerWidth > 900) {
       const rect = menuSection.getBoundingClientRect();
       const totalScrollableHeight = menuSection.offsetHeight - window.innerHeight;
@@ -158,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isTicking = false;
   }
 
-  // RequestAnimationFrame scroll listener for 100% smooth native wheel scrolling
+  // RequestAnimationFrame scroll listener
   window.addEventListener('scroll', () => {
     if (!isTicking) {
       requestAnimationFrame(onScroll);
@@ -168,6 +181,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial trigger
   onScroll();
+
+  // Mobile Horizontal Menu Scroll Tracker
+  if (menuTrack && window.innerWidth <= 900) {
+    menuTrack.addEventListener('scroll', () => {
+      if (menuProgressFill) {
+        const maxScroll = menuTrack.scrollWidth - menuTrack.clientWidth;
+        const currentScroll = menuTrack.scrollLeft;
+        const progress = Math.abs(currentScroll) / maxScroll;
+        menuProgressFill.style.width = `${progress * 100}%`;
+      }
+    }, { passive: true });
+  }
 
   /* ------------------------------------------------------------------------
      4. M7 & 9.6: 12 SEATS DIAGRAM DATA & INTERACTION
@@ -290,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.16 });
+    }, { threshold: 0.12 });
 
     revealElements.forEach(el => observer.observe(el));
   } else {
