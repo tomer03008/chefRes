@@ -1,6 +1,6 @@
 /* ==========================================================================
    script.js — Application Logic & Motion System for נוריה (Nuria)
-   100% Mobile Friendly, Native Scroll & Interactive Touch Animations
+   Full Mobile Animation Engine: Signature Dish & Infinite Food Marquee
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateLiveStatus();
 
   /* ------------------------------------------------------------------------
-     3. UNIFIED 60FPS SCROLL ENGINE (DESKTOP & MOBILE RESPONSIVE)
+     3. UNIFIED 60FPS SCROLL ENGINE (DESKTOP & MOBILE ANIMATIONS)
      ------------------------------------------------------------------------ */
   const siteNav = document.getElementById('siteNav');
   const mobileStickyCta = document.getElementById('mobileStickyCta');
@@ -78,9 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuTrack = document.getElementById('menuTrack');
   const menuProgressFill = document.getElementById('menuProgressFill');
 
+  let currentSigStep = 1;
   let isTicking = false;
 
   function setActiveSignatureStep(stepNumber) {
+    if (currentSigStep === stepNumber) return;
+    currentSigStep = stepNumber;
+
     stepLines.forEach((line) => {
       const step = parseInt(line.dataset.step, 10);
       if (step === stepNumber) {
@@ -107,6 +111,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Mobile Auto-Cycle Timer for Signature Dish
+  let sigAutoTimer = null;
+  if ('IntersectionObserver' in window && signatureSection) {
+    const sigObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && window.innerWidth <= 900) {
+          if (!sigAutoTimer) {
+            sigAutoTimer = setInterval(() => {
+              let nextStep = currentSigStep + 1;
+              if (nextStep > 3) nextStep = 1;
+              setActiveSignatureStep(nextStep);
+            }, 3200);
+          }
+        } else {
+          if (sigAutoTimer) {
+            clearInterval(sigAutoTimer);
+            sigAutoTimer = null;
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sigObserver.observe(signatureSection);
+  }
+
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
 
@@ -128,26 +157,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // B. M4: Signature Dish Sticky Progression (Desktop & Mobile)
-    if (signatureSection) {
-      if (window.innerWidth > 900) {
-        const rect = signatureSection.getBoundingClientRect();
-        const sectionHeight = signatureSection.offsetHeight - window.innerHeight;
-        const scrollProgress = Math.min(1, Math.max(0, -rect.top / sectionHeight));
+    // B. M4: Signature Dish Sticky Progression (Desktop Scroll)
+    if (signatureSection && window.innerWidth > 900) {
+      const rect = signatureSection.getBoundingClientRect();
+      const sectionHeight = signatureSection.offsetHeight - window.innerHeight;
+      const scrollProgress = Math.min(1, Math.max(0, -rect.top / sectionHeight));
 
-        let activeStep = 1;
-        if (scrollProgress > 0.66) {
-          activeStep = 3;
-        } else if (scrollProgress > 0.33) {
-          activeStep = 2;
-        }
-        setActiveSignatureStep(activeStep);
+      let activeStep = 1;
+      if (scrollProgress > 0.66) {
+        activeStep = 3;
+      } else if (scrollProgress > 0.33) {
+        activeStep = 2;
       }
+      setActiveSignatureStep(activeStep);
     }
 
-    // C. M5: Opposite Moving Image Rows
+    // C. M5: Opposite Moving Image Rows (Desktop & Mobile)
     if (marqueeTop && marqueeBottom) {
-      const moveAmount = (scrollY * 0.12) % 300;
+      const moveAmount = (scrollY * 0.18) % 600;
       marqueeTop.style.transform = `translateX(${moveAmount}px)`;
       marqueeBottom.style.transform = `translateX(${-moveAmount}px)`;
     }

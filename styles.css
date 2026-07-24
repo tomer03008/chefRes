@@ -1853,6 +1853,24 @@ body.ready .hero-section__title {
     grid-template-columns: 1fr;
   }
 
+  .step-line {
+    cursor: pointer;
+  }
+
+  /* Infinite Smooth Food Marquee for Mobile */
+  .food-marquee-track {
+    width: max-content;
+    will-change: transform;
+  }
+
+  .food-marquee-track--top {
+    animation: mobileMarqueeLeft 24s linear infinite;
+  }
+
+  .food-marquee-track--bottom {
+    animation: mobileMarqueeRight 24s linear infinite;
+  }
+
   .horizontal-menu-section {
     height: auto;
   }
@@ -1890,6 +1908,16 @@ body.ready .hero-section__title {
   input, select, textarea {
     font-size: 16px !important;
   }
+}
+
+@keyframes mobileMarqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+@keyframes mobileMarqueeRight {
+  0% { transform: translateX(50%); }
+  100% { transform: translateX(0); }
 }
 
 /* --------------------------------------------------------------------------
