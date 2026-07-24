@@ -157,41 +157,45 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // B. M4: Signature Dish Sticky Progression (Desktop Scroll)
-    if (signatureSection && window.innerWidth > 900) {
+    // B. M4: Signature Dish Sticky Progression (Desktop & Mobile)
+    if (signatureSection) {
       const rect = signatureSection.getBoundingClientRect();
       const sectionHeight = signatureSection.offsetHeight - window.innerHeight;
-      const scrollProgress = Math.min(1, Math.max(0, -rect.top / sectionHeight));
+      if (sectionHeight > 0) {
+        const scrollProgress = Math.min(1, Math.max(0, -rect.top / sectionHeight));
 
-      let activeStep = 1;
-      if (scrollProgress > 0.66) {
-        activeStep = 3;
-      } else if (scrollProgress > 0.33) {
-        activeStep = 2;
+        let activeStep = 1;
+        if (scrollProgress > 0.66) {
+          activeStep = 3;
+        } else if (scrollProgress > 0.33) {
+          activeStep = 2;
+        }
+        setActiveSignatureStep(activeStep);
       }
-      setActiveSignatureStep(activeStep);
     }
 
     // C. M5: Opposite Moving Image Rows (Desktop & Mobile)
     if (marqueeTop && marqueeBottom) {
-      const moveAmount = (scrollY * 0.18) % 600;
+      const moveAmount = (scrollY * 0.14) % 600;
       marqueeTop.style.transform = `translateX(${moveAmount}px)`;
       marqueeBottom.style.transform = `translateX(${-moveAmount}px)`;
     }
 
-    // D. M6: Horizontal Pinned Menu Track (Desktop Only)
-    if (menuSection && menuTrack && window.innerWidth > 900) {
+    // D. M6: Horizontal Pinned Menu Track (Desktop & Mobile)
+    if (menuSection && menuTrack) {
       const rect = menuSection.getBoundingClientRect();
       const totalScrollableHeight = menuSection.offsetHeight - window.innerHeight;
-      const progress = Math.min(1, Math.max(0, -rect.top / totalScrollableHeight));
+      if (totalScrollableHeight > 0) {
+        const progress = Math.min(1, Math.max(0, -rect.top / totalScrollableHeight));
 
-      const maxTranslate = menuTrack.scrollWidth - window.innerWidth + 80;
-      const translateX = progress * maxTranslate;
+        const maxTranslate = menuTrack.scrollWidth - window.innerWidth + (window.innerWidth <= 900 ? 24 : 80);
+        const translateX = progress * maxTranslate;
 
-      menuTrack.style.transform = `translateX(${translateX}px)`;
+        menuTrack.style.transform = `translateX(${translateX}px)`;
 
-      if (menuProgressFill) {
-        menuProgressFill.style.width = `${progress * 100}%`;
+        if (menuProgressFill) {
+          menuProgressFill.style.width = `${progress * 100}%`;
+        }
       }
     }
 

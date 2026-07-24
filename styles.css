@@ -1840,53 +1840,73 @@ body.ready .hero-section__title {
   
   .media-frame--b { margin-top: 0; }
   
+  /* Act 05 Signature Dish Sticky Pinned Scroll on Mobile */
   .signature-section {
-    height: auto;
-    padding-block: var(--sec-y);
+    height: 260vh !important;
+    position: relative !important;
+    padding-block: 0 !important;
   }
+
   .signature-pin-wrap {
-    position: static;
-    height: auto;
-    padding-block: 0;
+    position: sticky !important;
+    top: 0 !important;
+    height: 100svh !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
   }
+
   .signature-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .signature-img-stack {
+    aspect-ratio: 16/10;
+    height: 220px;
   }
 
   .step-line {
     cursor: pointer;
+    padding: 8px 12px;
+    font-size: 0.88rem;
   }
 
-  /* Infinite Smooth Food Marquee for Mobile */
-  .food-marquee-track {
-    width: max-content;
+  .signature-tags {
+    margin-block: 16px;
+    gap: 6px;
+  }
+
+  .signature-price-row {
+    padding-top: 14px;
+  }
+
+  /* Act 07 Horizontal Menu Track Sticky Pinned Scroll on Mobile */
+  .horizontal-menu-section {
+    height: 260vh !important;
+    position: relative !important;
+    padding-block: 0 !important;
+  }
+
+  .horizontal-menu-pin {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100svh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .horizontal-menu-track {
+    display: flex !important;
+    gap: 16px !important;
+    width: max-content !important;
     will-change: transform;
   }
 
-  .food-marquee-track--top {
-    animation: mobileMarqueeLeft 24s linear infinite;
-  }
-
-  .food-marquee-track--bottom {
-    animation: mobileMarqueeRight 24s linear infinite;
-  }
-
-  .horizontal-menu-section {
-    height: auto;
-  }
-  .horizontal-menu-pin {
-    position: static;
-    height: auto;
-  }
-  .horizontal-menu-track {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 20px;
-    -webkit-overflow-scrolling: touch;
-  }
   .menu-panel {
-    flex: 0 0 85vw;
-    scroll-snap-align: start;
+    flex: 0 0 85vw !important;
   }
   
   .gallery-grid {
@@ -1908,16 +1928,6 @@ body.ready .hero-section__title {
   input, select, textarea {
     font-size: 16px !important;
   }
-}
-
-@keyframes mobileMarqueeLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(50%); }
-}
-
-@keyframes mobileMarqueeRight {
-  0% { transform: translateX(50%); }
-  100% { transform: translateX(0); }
 }
 
 /* --------------------------------------------------------------------------
