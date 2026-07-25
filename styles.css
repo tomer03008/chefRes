@@ -1851,45 +1851,47 @@ body.ready .hero-section__title {
   
   .media-frame--b { margin-top: 0; }
   
-  /* Act 05 · Signature — un-pinned & auto-rotating on mobile (no scroll-hijack) */
+  /* Act 05 · Signature — pinned scroll + cross-fading images on mobile too.
+     Compact layout so the whole thing fits one viewport: image on top,
+     long paragraph + tag chips hidden (the timeline steps carry the story). */
   .signature-section {
-    height: auto !important;
+    height: 220vh !important;
     position: relative !important;
-    padding-block: var(--sec-y-tight) !important;
+    padding-block: 0 !important;
   }
 
   .signature-pin-wrap {
-    position: static !important;
-    top: auto !important;
-    height: auto !important;
-    display: block !important;
-    align-items: initial !important;
-    overflow: visible !important;
+    position: sticky !important;
+    top: 0 !important;
+    height: 100svh !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
   }
 
   .signature-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 18px;
   }
 
+  .signature-img-col { order: -1; }          /* image above the text */
+
   .signature-img-stack {
-    aspect-ratio: 16/10;
-    height: 220px;
+    aspect-ratio: auto;
+    height: 32vh;
+    width: 100%;
   }
+
+  .signature-section .body-text,
+  .signature-tags { display: none; }          /* trim to fit the pin */
+
+  .signature-steps-indicator { margin-block: 16px; gap: 10px; }
+  .signature-price-row { padding-top: 14px; }
 
   .step-line {
     cursor: pointer;
     padding: 8px 12px;
     font-size: 0.88rem;
-  }
-
-  .signature-tags {
-    margin-block: 16px;
-    gap: 6px;
-  }
-
-  .signature-price-row {
-    padding-top: 14px;
   }
 
   /* Act 07 · Menu — native horizontal swipe on mobile (no scroll-hijack) */

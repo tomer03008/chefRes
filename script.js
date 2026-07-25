@@ -111,30 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Mobile Auto-Cycle Timer for Signature Dish
-  let sigAutoTimer = null;
-  if ('IntersectionObserver' in window && signatureSection) {
-    const sigObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && window.innerWidth <= 900) {
-          if (!sigAutoTimer) {
-            sigAutoTimer = setInterval(() => {
-              let nextStep = currentSigStep + 1;
-              if (nextStep > 3) nextStep = 1;
-              setActiveSignatureStep(nextStep);
-            }, 3200);
-          }
-        } else {
-          if (sigAutoTimer) {
-            clearInterval(sigAutoTimer);
-            sigAutoTimer = null;
-          }
-        }
-      });
-    }, { threshold: 0.2 });
-
-    sigObserver.observe(signatureSection);
-  }
+  // NOTE: no auto-cycle timer. On both desktop AND mobile the signature is a
+  // pinned sticky section whose step/image is driven purely by scroll progress
+  // (section B below). A timer running alongside the scroll driver was what made
+  // the mobile steps jitter — so the scroll pin is now the single source of truth.
 
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
@@ -157,10 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // B. M4: Signature Dish Sticky Progression — DESKTOP ONLY.
-    // On mobile the section is un-pinned and driven by the auto-cycle timer
-    // (see sigObserver below); running both would make the steps jitter.
-    if (signatureSection && window.innerWidth > 900) {
+    // B. M4: Signature Dish Sticky Progression — DESKTOP & MOBILE.
+    // Section is pinned on both (see @media mobile CSS); scroll progress alone
+    // switches the 3 steps + cross-fading images. No competing timer anymore.
+    if (signatureSection) {
       const rect = signatureSection.getBoundingClientRect();
       const sectionHeight = signatureSection.offsetHeight - window.innerHeight;
       if (sectionHeight > 0) {
