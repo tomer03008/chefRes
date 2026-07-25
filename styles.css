@@ -869,20 +869,22 @@ body.ready .hero-section__title {
 .food-marquee-section {
   padding-block: var(--sec-y-tight);
   overflow: hidden;
+  direction: ltr;               /* left-align the max-content tracks so drifting left keeps them filled (no empty right side) */
 }
 
 .food-marquee-track {
   display: flex;
-  gap: 16px;
+  direction: ltr;               /* neutralize page-RTL so the loop fills edge-to-edge (no empty side) */
   margin-bottom: 16px;
   width: max-content;
   will-change: transform;
 }
 
-/* Continuous, seamless drift (content is duplicated once, so -50% = one loop).
-   Time-based CSS animation — smooth on touch, no scroll-hijack, no snap jump. */
-.food-marquee-track--top { animation: marqueeDrift 60s linear infinite; }
-.food-marquee-track--bottom { animation: marqueeDrift 52s linear infinite reverse; }
+/* Seamless infinite drift. The row is duplicated once and every card carries its
+   own trailing margin, so translateX(-50%) lands copy-2 exactly onto copy-1 —
+   the viewport is filled at every moment, with no gap and no empty space. */
+.food-marquee-track--top { animation: marqueeDrift 24s linear infinite; }
+.food-marquee-track--bottom { animation: marqueeDrift 20s linear infinite reverse; }
 .food-marquee-section:hover .food-marquee-track { animation-play-state: paused; }
 
 @keyframes marqueeDrift {
@@ -893,6 +895,7 @@ body.ready .hero-section__title {
 .food-card {
   position: relative;
   flex: 0 0 clamp(230px, 27vw, 390px);
+  margin-inline-end: 16px;      /* spacing lives on the card, not flex-gap, so -50% stays seamless */
   aspect-ratio: 3/4;
   overflow: hidden;
   border: var(--hair) solid rgba(36,28,34,.16);
@@ -925,6 +928,8 @@ body.ready .hero-section__title {
   bottom: 0;
   right: 0;
   left: 0;
+  direction: rtl;               /* track is LTR for the loop; keep Hebrew captions RTL */
+  text-align: right;
   padding: 32px 16px 12px;
   background: linear-gradient(to top, rgba(28,21,26,.92), transparent);
   color: var(--plaster-100);
@@ -1878,20 +1883,22 @@ body.ready .hero-section__title {
 
   .signature-img-stack {
     aspect-ratio: auto;
-    height: 32vh;
+    height: 26vh;
     width: 100%;
   }
 
   .signature-section .body-text,
   .signature-tags { display: none; }          /* trim to fit the pin */
 
-  .signature-steps-indicator { margin-block: 16px; gap: 10px; }
-  .signature-price-row { padding-top: 14px; }
+  .signature-grid { align-content: center; }
+  .signature-steps-indicator { margin-block: 12px; gap: 8px; }
+  .signature-price-row { padding-top: 10px; }
+  .signature-price-row .price-val { font-size: 2.2rem; }
 
   .step-line {
     cursor: pointer;
-    padding: 8px 12px;
-    font-size: 0.88rem;
+    padding: 6px 12px;
+    font-size: 0.84rem;
   }
 
   /* Act 07 · Menu — native horizontal swipe on mobile (no scroll-hijack) */
