@@ -157,8 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // B. M4: Signature Dish Sticky Progression (Desktop & Mobile)
-    if (signatureSection) {
+    // B. M4: Signature Dish Sticky Progression — DESKTOP ONLY.
+    // On mobile the section is un-pinned and driven by the auto-cycle timer
+    // (see sigObserver below); running both would make the steps jitter.
+    if (signatureSection && window.innerWidth > 900) {
       const rect = signatureSection.getBoundingClientRect();
       const sectionHeight = signatureSection.offsetHeight - window.innerHeight;
       if (sectionHeight > 0) {
@@ -174,21 +176,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // C. M5: Opposite Moving Image Rows (Desktop & Mobile)
-    if (marqueeTop && marqueeBottom) {
-      const moveAmount = (scrollY * 0.14) % 600;
-      marqueeTop.style.transform = `translateX(${moveAmount}px)`;
-      marqueeBottom.style.transform = `translateX(${-moveAmount}px)`;
-    }
+    // C. M5: the food rows are now a continuous CSS animation (see styles.css).
+    //    No scroll-linked transform — that caused a snap every 600px on touch.
 
-    // D. M6: Horizontal Pinned Menu Track (Desktop & Mobile)
-    if (menuSection && menuTrack) {
+    // D. M6: Horizontal Pinned Menu Track — DESKTOP ONLY.
+    // On mobile the track is a native horizontal swipe carousel (overflow-x:auto),
+    // and its progress bar is updated by the native scroll listener below.
+    if (menuSection && menuTrack && window.innerWidth > 900) {
       const rect = menuSection.getBoundingClientRect();
       const totalScrollableHeight = menuSection.offsetHeight - window.innerHeight;
       if (totalScrollableHeight > 0) {
         const progress = Math.min(1, Math.max(0, -rect.top / totalScrollableHeight));
 
-        const maxTranslate = menuTrack.scrollWidth - window.innerWidth + (window.innerWidth <= 900 ? 24 : 80);
+        const maxTranslate = menuTrack.scrollWidth - window.innerWidth + 80;
         const translateX = progress * maxTranslate;
 
         menuTrack.style.transform = `translateX(${translateX}px)`;

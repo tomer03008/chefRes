@@ -875,8 +875,19 @@ body.ready .hero-section__title {
   display: flex;
   gap: 16px;
   margin-bottom: 16px;
+  width: max-content;
   will-change: transform;
-  transition: transform 0.1s linear;
+}
+
+/* Continuous, seamless drift (content is duplicated once, so -50% = one loop).
+   Time-based CSS animation — smooth on touch, no scroll-hijack, no snap jump. */
+.food-marquee-track--top { animation: marqueeDrift 60s linear infinite; }
+.food-marquee-track--bottom { animation: marqueeDrift 52s linear infinite reverse; }
+.food-marquee-section:hover .food-marquee-track { animation-play-state: paused; }
+
+@keyframes marqueeDrift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .food-card {
@@ -1840,20 +1851,20 @@ body.ready .hero-section__title {
   
   .media-frame--b { margin-top: 0; }
   
-  /* Act 05 Signature Dish Sticky Pinned Scroll on Mobile */
+  /* Act 05 · Signature — un-pinned & auto-rotating on mobile (no scroll-hijack) */
   .signature-section {
-    height: 260vh !important;
+    height: auto !important;
     position: relative !important;
-    padding-block: 0 !important;
+    padding-block: var(--sec-y-tight) !important;
   }
 
   .signature-pin-wrap {
-    position: sticky !important;
-    top: 0 !important;
-    height: 100svh !important;
-    display: flex !important;
-    align-items: center !important;
-    overflow: hidden !important;
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    display: block !important;
+    align-items: initial !important;
+    overflow: visible !important;
   }
 
   .signature-grid {
@@ -1881,32 +1892,40 @@ body.ready .hero-section__title {
     padding-top: 14px;
   }
 
-  /* Act 07 Horizontal Menu Track Sticky Pinned Scroll on Mobile */
+  /* Act 07 · Menu — native horizontal swipe on mobile (no scroll-hijack) */
   .horizontal-menu-section {
-    height: 260vh !important;
+    height: auto !important;
     position: relative !important;
-    padding-block: 0 !important;
+    padding-block: var(--sec-y-tight) !important;
   }
 
   .horizontal-menu-pin {
-    position: sticky !important;
-    top: 0 !important;
-    height: 100svh !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    overflow: hidden !important;
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
+    padding-block: 0 !important;
   }
 
   .horizontal-menu-track {
     display: flex !important;
     gap: 16px !important;
-    width: max-content !important;
-    will-change: transform;
+    width: auto !important;
+    transform: none !important;        /* overrides any stale JS transform */
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-padding-inline: var(--pad-x);
+    padding-inline: var(--pad-x);
+    padding-bottom: 10px;
+    scrollbar-width: none;
   }
+  .horizontal-menu-track::-webkit-scrollbar { display: none; }
 
   .menu-panel {
     flex: 0 0 85vw !important;
+    scroll-snap-align: center;
   }
   
   .gallery-grid {
