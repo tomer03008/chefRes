@@ -111,29 +111,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Mobile: the signature is NOT pinned (that clipped the image). It's a normal
-  // section with a full, uncropped image, and the 3 stages cross-fade on a gentle
-  // timer while it's in view. Desktop keeps the scroll-driven pin (section B).
-  let sigAutoTimer = null;
-  if ('IntersectionObserver' in window && signatureSection) {
-    const sigObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const mobile = window.innerWidth <= 900;
-        if (entry.isIntersecting && mobile) {
-          if (!sigAutoTimer) {
-            sigAutoTimer = setInterval(() => {
-              const next = currentSigStep >= 3 ? 1 : currentSigStep + 1;
-              setActiveSignatureStep(next);
-            }, 2800);
-          }
-        } else if (sigAutoTimer) {
-          clearInterval(sigAutoTimer);
-          sigAutoTimer = null;
-        }
-      });
-    }, { threshold: 0.25 });
-    sigObserver.observe(signatureSection);
+  /* M5: Infinite food marquees — driven by requestAnimationFrame (time-based),
+     NOT a CSS animation. iOS Safari intermittently fails to paint / animate a
+     wide CSS-animated flex layer (blank row, or a frozen static row); a rAF
+     transform loop repaints every frame and runs reliably everywhere. The rows
+     are duplicated once, so wrapping at half the track width is seamless. */
+  function runMarquee(track, pxPerSec, dir) {
+    if (!track) return;
+    let offset = dir < 0 ? 0 : -track.scrollWidth / 2;
+    let last = null;
+    function frame(t) {
+      if (last === null) last = t;
+      const dt = Math.min(t - last, 50); // clamp after tab-switch pauses
+      last = t;
+      const half = track.scrollWidth / 2;
+      offset += dir * pxPerSec * dt / 1000;
+      if (offset <= -half) offset += half;
+      if (offset > 0) offset -= half;
+      track.style.transform = `translate3d(${offset}px,0,0)`;
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
   }
+  runMarquee(marqueeTop, 55, -1);
+  runMarquee(marqueeBottom, 45, 1);
 
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
@@ -156,10 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // B. M4: Signature Dish Sticky Progression — DESKTOP ONLY.
-    // Mobile is un-pinned and driven by the auto-cycle timer above (running both
-    // would fight); on mobile innerWidth<=900 this block is skipped.
-    if (signatureSection && window.innerWidth > 900) {
+    // B. M4: Signature Dish Sticky Progression — DESKTOP & MOBILE.
+    // Pinned on both; scroll progress alone advances the 3 stages + images.
+    if (signatureSection) {
       const rect = signatureSection.getBoundingClientRect();
       const sectionHeight = signatureSection.offsetHeight - window.innerHeight;
       if (sectionHeight > 0) {
@@ -178,16 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // C. M5: the food rows are now a continuous CSS animation (see styles.css).
     //    No scroll-linked transform — that caused a snap every 600px on touch.
 
-    // D. M6: Horizontal Pinned Menu Track — DESKTOP ONLY.
-    // On mobile the track is a native horizontal swipe carousel (overflow-x:auto),
-    // and its progress bar is updated by the native scroll listener below.
-    if (menuSection && menuTrack && window.innerWidth > 900) {
+    // D. M6: Horizontal Pinned Menu Track — DESKTOP & MOBILE.
+    // Pinned on both; vertical scroll drives the track sideways (scroll-jacked).
+    if (menuSection && menuTrack) {
       const rect = menuSection.getBoundingClientRect();
       const totalScrollableHeight = menuSection.offsetHeight - window.innerHeight;
       if (totalScrollableHeight > 0) {
         const progress = Math.min(1, Math.max(0, -rect.top / totalScrollableHeight));
 
-        const maxTranslate = menuTrack.scrollWidth - window.innerWidth + 80;
+        const edge = window.innerWidth <= 900 ? 24 : 80;
+        const maxTranslate = menuTrack.scrollWidth - window.innerWidth + edge;
         const translateX = progress * maxTranslate;
 
         menuTrack.style.transform = `translateX(${translateX}px)`;
@@ -211,18 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial trigger
   onScroll();
-
-  // Mobile Horizontal Menu Scroll Tracker
-  if (menuTrack && window.innerWidth <= 900) {
-    menuTrack.addEventListener('scroll', () => {
-      if (menuProgressFill) {
-        const maxScroll = menuTrack.scrollWidth - menuTrack.clientWidth;
-        const currentScroll = menuTrack.scrollLeft;
-        const progress = Math.abs(currentScroll) / maxScroll;
-        menuProgressFill.style.width = `${progress * 100}%`;
-      }
-    }, { passive: true });
-  }
 
   /* ------------------------------------------------------------------------
      4. M7 & 9.6: 12 SEATS DIAGRAM DATA & INTERACTION

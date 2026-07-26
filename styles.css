@@ -877,19 +877,8 @@ body.ready .hero-section__title {
   direction: ltr;               /* neutralize page-RTL so the loop fills edge-to-edge (no empty side) */
   margin-bottom: 16px;
   width: max-content;
-  will-change: transform;
-}
-
-/* Seamless infinite drift. The row is duplicated once and every card carries its
-   own trailing margin, so translateX(-50%) lands copy-2 exactly onto copy-1 —
-   the viewport is filled at every moment, with no gap and no empty space. */
-.food-marquee-track--top { animation: marqueeDrift 20s linear infinite; }
-.food-marquee-track--bottom { animation: marqueeDrift 17s linear infinite reverse; }
-.food-marquee-section:hover .food-marquee-track { animation-play-state: paused; }
-
-@keyframes marqueeDrift {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  /* transform is set every frame by the rAF marquee in script.js — no CSS
+     animation / will-change here (that blanked/froze the row on iOS Safari). */
 }
 
 .food-card {
@@ -1859,80 +1848,87 @@ body.ready .hero-section__title {
   
   .media-frame--b { margin-top: 0; }
   
-  /* Act 05 · Signature — UN-PINNED on mobile. Pinning kept clipping the image;
-     here it's a normal section with the full, uncropped image on top, and the
-     three stages cross-fade on a timer (script.js). Nothing gets cut off. */
+  /* Act 05 · Signature — PINNED on mobile (like desktop): scroll stops here and
+     advances the 3 stages, then releases. Compact so the WHOLE thing (image +
+     stages + price) fits one viewport ABOVE the sticky CTA bar — nothing clips.
+     Image is ~36vh (object-fit cover = looks full, never cropped by the pin). */
   .signature-section {
-    height: auto !important;
+    height: 260vh !important;
     position: relative !important;
-    padding-block: var(--sec-y-tight) !important;
+    padding-block: 0 !important;
   }
 
   .signature-pin-wrap {
-    position: static !important;
-    top: auto !important;
-    height: auto !important;
-    display: block !important;
-    overflow: visible !important;
+    position: sticky !important;
+    top: 0 !important;
+    height: 100svh !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    padding-bottom: 72px !important;   /* clear the fixed mobile CTA bar */
   }
 
   .signature-grid {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 16px;
+    align-content: center;
   }
 
   .signature-img-col { order: -1; }          /* image above the text */
 
   .signature-img-stack {
-    aspect-ratio: 4 / 3;                       /* full image, never cropped by a pin */
-    height: auto;
+    aspect-ratio: auto;
+    height: 30vh;
     width: 100%;
   }
 
-  .signature-section .body-text { display: none; }   /* keep it lean on mobile */
+  .signature-section .body-text,
+  .signature-tags { display: none; }         /* trim so it fits the pinned viewport */
 
-  .signature-steps-indicator { margin-block: 16px; gap: 8px; }
+  .signature-steps-indicator { margin-block: 10px; gap: 7px; }
+  .signature-price-row { padding-top: 8px; }
+  .signature-price-row .price-val { font-size: 1.9rem; }
 
   .step-line {
     cursor: pointer;
-    padding: 8px 12px;
-    font-size: 0.86rem;
+    padding: 6px 12px;
+    font-size: 0.82rem;
   }
 
-  /* Act 07 · Menu — native horizontal swipe on mobile (no scroll-hijack) */
+  /* Act 07 · Menu — PINNED on mobile (like desktop): scroll stops and moves the
+     track sideways through the panels, then releases. Driven by script.js. */
   .horizontal-menu-section {
-    height: auto !important;
+    height: 260vh !important;
     position: relative !important;
-    padding-block: var(--sec-y-tight) !important;
+    padding-block: 0 !important;
   }
 
   .horizontal-menu-pin {
-    position: static !important;
-    top: auto !important;
-    height: auto !important;
-    display: block !important;
-    overflow: visible !important;
-    padding-block: 0 !important;
+    position: sticky !important;
+    top: 0 !important;
+    height: 100svh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    padding-bottom: 72px !important;      /* clear the fixed mobile CTA bar */
   }
+
+  .horizontal-menu-header { margin-bottom: 18px !important; }
+  .menu-head-desc { display: none; }        /* compact header so a panel fits above the CTA */
+  .horizontal-menu-header .sec-title { font-size: clamp(1.5rem, 6vw, 2rem) !important; margin-bottom: 10px; }
 
   .horizontal-menu-track {
     display: flex !important;
     gap: 16px !important;
-    width: auto !important;
-    transform: none !important;        /* overrides any stale JS transform */
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    -webkit-overflow-scrolling: touch !important;
-    scroll-padding-inline: var(--pad-x);
-    padding-inline: var(--pad-x);
-    padding-bottom: 10px;
-    scrollbar-width: none;
+    width: max-content !important;
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
   }
-  .horizontal-menu-track::-webkit-scrollbar { display: none; }
 
   .menu-panel {
-    flex: 0 0 85vw !important;
-    scroll-snap-align: center;
+    flex: 0 0 82vw !important;
+    padding: 24px 22px !important;
   }
   
   .gallery-grid {
