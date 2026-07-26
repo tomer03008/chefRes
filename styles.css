@@ -1000,6 +1000,24 @@ body.ready .hero-section__title {
   transition: width 0.1s linear;
 }
 
+/* Hint that the sideways menu is driven by scrolling DOWN (the motion confuses people) */
+.menu-scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--verdigris-700);
+}
+.menu-scroll-hint span {
+  display: inline-block;
+  animation: hintBob 1.5s var(--ease-io) infinite;
+}
+@keyframes hintBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
 .horizontal-menu-track {
   display: flex;
   gap: clamp(22px, 3vw, 42px);
