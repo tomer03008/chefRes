@@ -117,17 +117,23 @@ document.addEventListener('DOMContentLoaded', () => {
      transform loop repaints every frame and runs reliably everywhere. The rows
      are duplicated once, so wrapping at half the track width is seamless. */
   function runMarquee(track, pxPerSec, dir) {
-    if (!track) return;
-    let offset = dir < 0 ? 0 : -track.scrollWidth / 2;
+    if (!track || track.children.length < 2) return;
+    // The row is authored as two identical halves. One loop = the offsetLeft of
+    // the first child of the 2nd half = exact width of one copy (incl. margins).
+    // Measured from element positions (not scrollWidth) so it's always exact and
+    // self-heals if images/fonts reflow — the row can never drift into empty space.
+    const mid = track.children[track.children.length / 2];
+    const loopW = () => mid.offsetLeft || (track.scrollWidth / 2);
+    let offset = dir < 0 ? 0 : -loopW();
     let last = null;
     function frame(t) {
       if (last === null) last = t;
-      const dt = Math.min(t - last, 50); // clamp after tab-switch pauses
-      last = t;
-      const half = track.scrollWidth / 2;
+      let dt = t - last; last = t;
+      if (dt > 50) dt = 50;                 // clamp after tab-switch / GC pauses
+      const L = loopW();
       offset += dir * pxPerSec * dt / 1000;
-      if (offset <= -half) offset += half;
-      if (offset > 0) offset -= half;
+      if (offset <= -L) offset += L;
+      else if (offset > 0) offset -= L;
       track.style.transform = `translate3d(${offset}px,0,0)`;
       requestAnimationFrame(frame);
     }

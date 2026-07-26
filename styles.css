@@ -1865,7 +1865,8 @@ body.ready .hero-section__title {
     display: flex !important;
     align-items: center !important;
     overflow: hidden !important;
-    padding-bottom: 72px !important;   /* clear the fixed mobile CTA bar */
+    padding-top: 97px !important;       /* clear the fixed top nav (was hiding the image) */
+    padding-bottom: 78px !important;    /* clear the fixed mobile CTA bar */
   }
 
   .signature-grid {
@@ -1878,22 +1879,27 @@ body.ready .hero-section__title {
 
   .signature-img-stack {
     aspect-ratio: auto;
-    height: 30vh;
+    height: 22vh;
     width: 100%;
   }
 
+  /* trim everything non-essential so image + stages + price clear nav & CTA */
   .signature-section .body-text,
-  .signature-tags { display: none; }         /* trim so it fits the pinned viewport */
+  .signature-tags,
+  .signature-text-col .eyebrow { display: none; }
+  .signature-text-col .sec-title { font-size: clamp(1.3rem, 5.6vw, 1.7rem) !important; margin-bottom: 0; }
 
-  .signature-steps-indicator { margin-block: 10px; gap: 7px; }
+  .signature-steps-indicator { margin-block: 10px; gap: 6px; }
   .signature-price-row { padding-top: 8px; }
-  .signature-price-row .price-val { font-size: 1.9rem; }
+  .signature-price-row .price-val { font-size: 1.8rem; }
+  .signature-price-row .price-note { font-size: 0.72rem; }
 
   .step-line {
     cursor: pointer;
-    padding: 6px 12px;
-    font-size: 0.82rem;
+    padding: 5px 12px;
+    font-size: 0.8rem;
   }
+  .step-time { font-size: 0.95rem; }
 
   /* Act 07 · Menu — PINNED on mobile (like desktop): scroll stops and moves the
      track sideways through the panels, then releases. Driven by script.js. */
@@ -1911,7 +1917,8 @@ body.ready .hero-section__title {
     flex-direction: column !important;
     justify-content: center !important;
     overflow: hidden !important;
-    padding-bottom: 72px !important;      /* clear the fixed mobile CTA bar */
+    padding-top: 97px !important;         /* clear the fixed top nav */
+    padding-bottom: 78px !important;      /* clear the fixed mobile CTA bar */
   }
 
   .horizontal-menu-header { margin-bottom: 18px !important; }
