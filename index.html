@@ -12,9 +12,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Bellefair&family=Frank+Ruhl+Libre:wght@300;400;500&display=swap" rel="stylesheet">
 
+  <!-- Preload the shared dish images (small WebP, reused across many sections) -->
+  <link rel="preload" as="image" href="images/hero_bg.webp">
+  <link rel="preload" as="image" href="images/signature_dish.webp">
+  <link rel="preload" as="image" href="images/beef_tartare.webp">
+  <link rel="preload" as="image" href="images/ribeye_steak.webp">
+  <link rel="preload" as="image" href="images/chocolate_tart.webp">
+  <link rel="preload" as="image" href="images/chef_portrait.webp">
+
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/css/tokens.css?v=2026_sticky_mobile_v8">
-  <link rel="stylesheet" href="styles.css?v=2026_sticky_mobile_v8">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=2026_sticky_mobile_v9">
+  <link rel="stylesheet" href="styles.css?v=2026_sticky_mobile_v9">
 
   <!-- Lenis Smooth Scroll CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -71,7 +79,7 @@
           <span class="hero-section__eyebrow">שבזי 27 · נוה צדק · תל אביב</span>
           <h1 class="hero-section__title">שתים־עשרה כיסאות סביב האש.<br>תפריט אחד, שנכתב כל בוקר.</h1>
           <div class="hero-section__foot">
-            <p class="hero-section__lede">אין מנות קבועות ואין מטבח אחורי. אתם יושבים במרחק זרוע מהגריל, ואוכלים את מה שהגיע הבוקר משוק לוינסקי, מנמל יפו ומהחקלאים שאנחנו קונים מהם שמונה שנים.</p>
+            <p class="hero-section__lede">אין תפריט קבוע. יושבים מול הגריל, ואוכלים את מה שהגיע הבוקר מהשוק.</p>
             <div class="hero-section__actions">
               <a href="#reserve" class="btn btn--fill">הזמנת מקום</a>
               <a href="menu.html" class="btn btn--outline">תפריט הערב</a>
@@ -147,9 +155,8 @@
           <div class="manifest-content">
             <span class="eyebrow">איך זה עובד</span>
             <h2 class="sec-title">אנחנו לא מחליטים מה תאכלו.<br>השוק מחליט.</h2>
-            <p class="lede-text">בשש בבוקר עומרי בשוק. עד עשר התפריט נכתב ביד על גב הכרטיס של אתמול, ובאחת־עשרה הוא נדפס. לפעמים יש דג אחד בלבד לכל הערב, ואז שתים־עשרה מנות יוצאות מאותו דג — כל אחת מחלק אחר.</p>
-            <p class="body-text">אם יש משהו שאתם לא אוכלים, ספרו לנו כשאתם מזמינים. אנחנו נבנה סביבכם, לא נסיר מהצלחת.</p>
-            
+            <p class="lede-text">בשש בבוקר עומרי בשוק. באחת־עשרה התפריט מודפס. מה שנגמר — נגמר.</p>
+
             <div class="manifest-facts">
               <div class="fact-item">
                 <span class="fact-num">12</span>
@@ -727,6 +734,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="script.js?v=2026_sticky_mobile_v8"></script>
+  <script src="script.js?v=2026_sticky_mobile_v9"></script>
 </body>
 </html>

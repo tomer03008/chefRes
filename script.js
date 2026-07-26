@@ -111,10 +111,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // NOTE: no auto-cycle timer. On both desktop AND mobile the signature is a
-  // pinned sticky section whose step/image is driven purely by scroll progress
-  // (section B below). A timer running alongside the scroll driver was what made
-  // the mobile steps jitter — so the scroll pin is now the single source of truth.
+  // Mobile: the signature is NOT pinned (that clipped the image). It's a normal
+  // section with a full, uncropped image, and the 3 stages cross-fade on a gentle
+  // timer while it's in view. Desktop keeps the scroll-driven pin (section B).
+  let sigAutoTimer = null;
+  if ('IntersectionObserver' in window && signatureSection) {
+    const sigObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const mobile = window.innerWidth <= 900;
+        if (entry.isIntersecting && mobile) {
+          if (!sigAutoTimer) {
+            sigAutoTimer = setInterval(() => {
+              const next = currentSigStep >= 3 ? 1 : currentSigStep + 1;
+              setActiveSignatureStep(next);
+            }, 2800);
+          }
+        } else if (sigAutoTimer) {
+          clearInterval(sigAutoTimer);
+          sigAutoTimer = null;
+        }
+      });
+    }, { threshold: 0.25 });
+    sigObserver.observe(signatureSection);
+  }
 
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
@@ -137,10 +156,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // B. M4: Signature Dish Sticky Progression — DESKTOP & MOBILE.
-    // Section is pinned on both (see @media mobile CSS); scroll progress alone
-    // switches the 3 steps + cross-fading images. No competing timer anymore.
-    if (signatureSection) {
+    // B. M4: Signature Dish Sticky Progression — DESKTOP ONLY.
+    // Mobile is un-pinned and driven by the auto-cycle timer above (running both
+    // would fight); on mobile innerWidth<=900 this block is skipped.
+    if (signatureSection && window.innerWidth > 900) {
       const rect = signatureSection.getBoundingClientRect();
       const sectionHeight = signatureSection.offsetHeight - window.innerHeight;
       if (sectionHeight > 0) {

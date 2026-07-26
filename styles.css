@@ -883,8 +883,8 @@ body.ready .hero-section__title {
 /* Seamless infinite drift. The row is duplicated once and every card carries its
    own trailing margin, so translateX(-50%) lands copy-2 exactly onto copy-1 —
    the viewport is filled at every moment, with no gap and no empty space. */
-.food-marquee-track--top { animation: marqueeDrift 24s linear infinite; }
-.food-marquee-track--bottom { animation: marqueeDrift 20s linear infinite reverse; }
+.food-marquee-track--top { animation: marqueeDrift 20s linear infinite; }
+.food-marquee-track--bottom { animation: marqueeDrift 17s linear infinite reverse; }
 .food-marquee-section:hover .food-marquee-track { animation-play-state: paused; }
 
 @keyframes marqueeDrift {
@@ -894,8 +894,11 @@ body.ready .hero-section__title {
 
 .food-card {
   position: relative;
-  flex: 0 0 clamp(230px, 27vw, 390px);
-  margin-inline-end: 16px;      /* spacing lives on the card, not flex-gap, so -50% stays seamless */
+  /* 20vw → exactly 5 cards span the viewport, so ONE duplicated copy always
+     covers the screen and translateX(-50%) never exposes empty space.
+     Smaller/denser than the old 27vw, and fills at every width. */
+  flex: 0 0 clamp(150px, 20vw, 420px);
+  margin-inline-end: 14px;      /* spacing lives on the card, not flex-gap, so -50% stays seamless */
   aspect-ratio: 3/4;
   overflow: hidden;
   border: var(--hair) solid rgba(36,28,34,.16);
@@ -1856,49 +1859,44 @@ body.ready .hero-section__title {
   
   .media-frame--b { margin-top: 0; }
   
-  /* Act 05 · Signature — pinned scroll + cross-fading images on mobile too.
-     Compact layout so the whole thing fits one viewport: image on top,
-     long paragraph + tag chips hidden (the timeline steps carry the story). */
+  /* Act 05 · Signature — UN-PINNED on mobile. Pinning kept clipping the image;
+     here it's a normal section with the full, uncropped image on top, and the
+     three stages cross-fade on a timer (script.js). Nothing gets cut off. */
   .signature-section {
-    height: 220vh !important;
+    height: auto !important;
     position: relative !important;
-    padding-block: 0 !important;
+    padding-block: var(--sec-y-tight) !important;
   }
 
   .signature-pin-wrap {
-    position: sticky !important;
-    top: 0 !important;
-    height: 100svh !important;
-    display: flex !important;
-    align-items: center !important;
-    overflow: hidden !important;
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
   }
 
   .signature-grid {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 22px;
   }
 
   .signature-img-col { order: -1; }          /* image above the text */
 
   .signature-img-stack {
-    aspect-ratio: auto;
-    height: 26vh;
+    aspect-ratio: 4 / 3;                       /* full image, never cropped by a pin */
+    height: auto;
     width: 100%;
   }
 
-  .signature-section .body-text,
-  .signature-tags { display: none; }          /* trim to fit the pin */
+  .signature-section .body-text { display: none; }   /* keep it lean on mobile */
 
-  .signature-grid { align-content: center; }
-  .signature-steps-indicator { margin-block: 12px; gap: 8px; }
-  .signature-price-row { padding-top: 10px; }
-  .signature-price-row .price-val { font-size: 2.2rem; }
+  .signature-steps-indicator { margin-block: 16px; gap: 8px; }
 
   .step-line {
     cursor: pointer;
-    padding: 6px 12px;
-    font-size: 0.84rem;
+    padding: 8px 12px;
+    font-size: 0.86rem;
   }
 
   /* Act 07 · Menu — native horizontal swipe on mobile (no scroll-hijack) */
