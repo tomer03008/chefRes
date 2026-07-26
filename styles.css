@@ -33,6 +33,19 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Final touch — a whisper of film grain over the whole frame for an editorial,
+   expensive feel. pointer-events:none so it never intercepts taps/scroll. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-reduced-motion: reduce) { body::after { display: none; } }
+
 /* Custom Selection Highlight */
 ::selection {
   background: var(--verdigris-700);
